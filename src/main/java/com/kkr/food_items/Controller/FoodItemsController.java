@@ -23,15 +23,7 @@ public class FoodItemsController {
         this.repository = repository;
     }
 
-    @GetMapping("/food-items")
-    public List<FoodItems> getAllFoodItems() {
-        return repository.findAll();
-    }
 
-    @GetMapping("/food-items/{id}")
-    public FoodItems getFoodItemById(@PathVariable Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
     @PostMapping("/food-items")
     FoodItems newFoodItems(@RequestBody FoodItems newFoodItems) {
@@ -52,6 +44,16 @@ public class FoodItemsController {
                     return repository.save(newFoodItems);
                 });
     }
+
+    @GetMapping("/food-items")
+    public List<FoodItems> getAllFoodItems() {
+        return repository.findAll();
+    }
+
+    @GetMapping("/food-items/{id}")
+    public FoodItems getFoodItemById(@PathVariable Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     @DeleteMapping("/food-items/{id}")
     void deleteFoodItems(@PathVariable Long id) {

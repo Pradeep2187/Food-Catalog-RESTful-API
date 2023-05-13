@@ -48,10 +48,50 @@ public class FoodItemsController {
                     return repository.save(newFoodItems);
                 });
     }
+      @PostMapping("/food-items")
+    FoodItems newFoodItems(@RequestBody FoodItems newFoodItems) {
+        return repository.save(newFoodItems);
+    }
+    @PutMapping("/food-items/{id}")
+    FoodItems replaceFoodItems(@RequestBody FoodItems newFoodItems, @PathVariable Long id) {
+
+        return repository.findById(id)
+                .map(foodItems -> {
+                    foodItems.setName(newFoodItems.getName());
+                    foodItems.setDescription(newFoodItems.getDescription());
+                    foodItems.setPrice(newFoodItems.getPrice());
+                    return repository.save(foodItems);
+                })
+                .orElseGet(() -> {
+                    newFoodItems.setId(id);
+                    return repository.save(newFoodItems);
+                });
+    }
 
     @DeleteMapping("/food-items/{id}")
     void deleteFoodItems(@PathVariable Long id) {
         repository.deleteById(id);
     }
+    
+     @PostMapping("/food-items")
+    FoodItems newFoodItems(@RequestBody FoodItems newFoodItems) {
+        return repository.save(newFoodItems);
+    }
+    @PutMapping("/food-items/{id}")
+    FoodItems replaceFoodItems(@RequestBody FoodItems newFoodItems, @PathVariable Long id) {
+
+        return repository.findById(id)
+                .map(foodItems -> {
+                    foodItems.setName(newFoodItems.getName());
+                    foodItems.setDescription(newFoodItems.getDescription());
+                    foodItems.setPrice(newFoodItems.getPrice());
+                    return repository.save(foodItems);
+                })
+                .orElseGet(() -> {
+                    newFoodItems.setId(id);
+                    return repository.save(newFoodItems);
+                });
+    }
+
 
 }

@@ -53,5 +53,8 @@ public class FoodItemsController {
     void deleteFoodItems(@PathVariable Long id) {
         repository.deleteById(id);
     }
+    public void display(){
+       System.out.println("displayed"): 
+    }
 
 }

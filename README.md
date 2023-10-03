@@ -1,8 +1,10 @@
 **Food Catalog RESTful API**
 **Overview**
+
 This repository contains the source code for the Food Catalog RESTful API. It is a Spring Boot application that provides RESTful endpoints for managing food items in a catalog.
 
 **Features**
+
 Create, Read, Update, and Delete (CRUD) operations for food items.
 Exposes RESTful API endpoints for easy integration.
 Utilizes Spring Data JPA for database interaction.
